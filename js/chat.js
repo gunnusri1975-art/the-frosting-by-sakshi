@@ -2,7 +2,7 @@
 // SAKSHI'S AI ASSISTANT WIDGET
 // =========================================================================
 
-const BACKEND_URL = "http://localhost:5000/api/chat";
+const BACKEND_URL = "/api/chat";
 
 const SYSTEM_PROMPT = `You are "Sakshi's AI Assistant", a friendly, human-like, and highly intelligent customer service AI for "The Frosting by Sakshi", a home bakery located in Kanpur, India. You must sound warm, polite, sweet, and helpful. Use emojis occasionally (like 🎂, 💖, ✨) but don't overdo it.
 
