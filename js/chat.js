@@ -2,10 +2,7 @@
 // SAKSHI'S AI ASSISTANT WIDGET
 // =========================================================================
 
-// PLEASE NOTE: In a production environment, you should never expose your API key
-// directly in client-side Javascript. It should be securely stored on a backend server.
-// For the purpose of this demonstration based on user request, it is implemented client-side.
-const GEMINI_API_KEY = "AIzaSyDws5LaIl7yMoknHESKeElLcoMRukjgJi0"; // Replace with actual key
+const BACKEND_URL = "http://localhost:5000/api/chat";
 
 const SYSTEM_PROMPT = `You are "Sakshi's AI Assistant", a friendly, human-like, and highly intelligent customer service AI for "The Frosting by Sakshi", a home bakery located in Kanpur, India. You must sound warm, polite, sweet, and helpful. Use emojis occasionally (like 🎂, 💖, ✨) but don't overdo it.
 
@@ -179,27 +176,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show typing indicator
         showTypingIndicator();
 
-        // Call Gemini API
+        // Call Backend API
         try {
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+            const response = await fetch(BACKEND_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    "contents": conversationHistory,
-                    "generationConfig": {
-                        "temperature": 0.5,
-                        "maxOutputTokens": 800,
-                    }
+                    history: conversationHistory
                 })
             });
 
             const data = await response.json();
             hideTypingIndicator();
 
-            if (data.candidates && data.candidates.length > 0) {
-                const botResponseText = data.candidates[0].content.parts[0].text;
+            if (data.reply) {
+                const botResponseText = data.reply;
 
                 // Add to UI
                 appendMessage(botResponseText, 'bot');
@@ -211,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             } else {
                 appendMessage("I'm sorry, I'm having trouble connecting right now. Please call us directly!", 'bot');
-                console.error("Gemini API Error:", data);
+                console.error("Backend API Error:", data);
             }
 
         } catch (error) {
