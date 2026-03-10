@@ -5,7 +5,7 @@
 // PLEASE NOTE: In a production environment, you should never expose your API key
 // directly in client-side Javascript. It should be securely stored on a backend server.
 // For the purpose of this demonstration based on user request, it is implemented client-side.
-const GEMINI_API_KEY = "AIzaSyBtliW2rjus6W8a88pYLw0hsEhlbxvSA70"; // Replace with actual key
+const GEMINI_API_KEY = "AIzaSyDws5LaIl7yMoknHESKeElLcoMRukjgJi0"; // Replace with actual key
 
 const SYSTEM_PROMPT = `You are "Sakshi's AI Assistant", a friendly, human-like, and highly intelligent customer service AI for "The Frosting by Sakshi", a home bakery located in Kanpur, India. You must sound warm, polite, sweet, and helpful. Use emojis occasionally (like 🎂, 💖, ✨) but don't overdo it.
 
