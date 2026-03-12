@@ -5,7 +5,7 @@
 // PLEASE NOTE: In a production environment, you should never expose your API key
 // directly in client-side Javascript. It should be securely stored on a backend server.
 // For the purpose of this demonstration based on user request, it is implemented client-side.
-const GEMINI_API_KEY = "AIzaSyDFfMQr_ukvyRP6N-Sz3FK7z7Iba5DPldg"; // Replace with actual key
+const GEMINI_API_KEY = "AIzaSyDbjuXUDlpA7cCuWD7IygyKpdOJ4_HQsQs"; // Replace with actual key
 
 const SYSTEM_PROMPT = `You are "Sakshi's AI Assistant", a friendly, human-like, and highly intelligent customer service AI for "The Frosting by Sakshi", a home bakery located in Kanpur, India. You must sound warm, polite, sweet, and helpful. Use emojis occasionally (like 🎂, 💖, ✨) but don't overdo it.
 
@@ -127,6 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
+    let isFetching = false;
+
     // Toggle Chat Window
     chatBtn.addEventListener('click', () => {
         chatWindow.classList.toggle('open');
@@ -160,8 +162,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     async function handleSendMessage() {
+        if (isFetching) return;
         const userText = chatInput.value.trim();
         if (!userText) return;
+
+        isFetching = true;
 
         // Clear input and disable button
         chatInput.value = '';
@@ -212,12 +217,20 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 appendMessage("I'm sorry, I'm having trouble connecting right now. Please call us directly!", 'bot');
                 console.error("Gemini API Error:", data);
+                // Revert user message from history on API error
+                conversationHistory.pop();
             }
 
         } catch (error) {
             hideTypingIndicator();
             appendMessage("I'm sorry, I seem to be offline. Please call us at +91 89349 35910.", 'bot');
             console.error("Fetch Error:", error);
+            // Revert user message from history on network error
+            conversationHistory.pop();
+        } finally {
+            isFetching = false;
+            // Update send button state
+            chatSendBtn.disabled = chatInput.value.trim() === '';
         }
     }
 
