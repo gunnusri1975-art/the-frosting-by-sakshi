@@ -247,15 +247,15 @@ p {
 .logo a {
     font-family: 'Fredoka', sans-serif;
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--primary-color);
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .nav-logo-img {
-    height: 65px;
+    height: 45px;
     width: auto;
     object-fit: contain;
 }
