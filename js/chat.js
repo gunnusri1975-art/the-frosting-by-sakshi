@@ -4,8 +4,7 @@
 
 // PLEASE NOTE: In a production environment, you should never expose your API key
 // directly in client-side Javascript. It should be securely stored on a backend server.
-// For the purpose of this demonstration based on user request, it is implemented client-side.
-const GEMINI_API_KEY = "AIzaSyDbjuXUDlpA7cCuWD7IygyKpdOJ4_HQsQs"; // Replace with actual key
+// The API key has been moved to a secure Netlify serverless function (.env variable).
 
 const SYSTEM_PROMPT = `You are "Sakshi's AI Assistant", a friendly, human-like, and highly intelligent customer service AI for "The Frosting by Sakshi", a home bakery located in Kanpur, India. You must sound warm, polite, sweet, and helpful. Use emojis occasionally (like 🎂, 💖, ✨) but don't overdo it.
 
@@ -184,19 +183,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show typing indicator
         showTypingIndicator();
 
-        // Call Gemini API
+        // Call Local Netlify Serverless Function
         try {
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+            const response = await fetch('/.netlify/functions/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    "contents": conversationHistory,
-                    "generationConfig": {
-                        "temperature": 0.5,
-                        "maxOutputTokens": 800,
-                    }
+                    "contents": conversationHistory
                 })
             });
 
