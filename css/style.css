@@ -226,16 +226,13 @@ p {
    ========================================================================= */
 .navbar {
     position: fixed;
-    top: 15px; /* Offset from top */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 95%; /* Responsive width */
-    max-width: 1400px; /* Constrain max size */
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: #FFF0F5; /* Aesthetic soft pink */
     box-shadow: var(--shadow-sm);
     z-index: 11000;
     transition: var(--transition);
-    border-radius: 50px; /* Make it pill-shaped */
 }
 
 .nav-container {
