@@ -229,7 +229,7 @@ p {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--bg-white);
+    background-color: #FFF0F5; /* Aesthetic soft pink */
     box-shadow: var(--shadow-sm);
     z-index: 11000;
     transition: var(--transition);
@@ -251,13 +251,16 @@ p {
     color: var(--primary-color);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px; /* slightly increased gap */
 }
 
 .nav-logo-img {
     height: 70px;
     width: auto;
     object-fit: contain;
+    mix-blend-mode: multiply; /* Removes the white padding from JPEG */
+    transform: scale(1.6); /* Scales the actual cupcake up visually */
+    transform-origin: left center;
 }
 
 .nav-links {
