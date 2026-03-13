@@ -255,12 +255,10 @@ p {
 }
 
 .nav-logo-img {
-    height: 55px; /* Reduced baseline height */
+    height: 70px; /* Increased baseline height to compensate for scale removal */
     width: auto;
     object-fit: contain;
     mix-blend-mode: multiply; /* Removes the white padding from JPEG */
-    transform: scale(1.4); /* Scales the actual cupcake up visually to compensate */
-    transform-origin: left center;
 }
 
 .nav-links {
