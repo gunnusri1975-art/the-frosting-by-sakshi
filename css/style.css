@@ -254,16 +254,14 @@ p {
     color: var(--primary-color);
     display: flex;
     align-items: center;
-    gap: 15px; /* slightly increased gap */
+    gap: 5px; /* Decrease gap since the image has its own padding baked in */
 }
 
 .nav-logo-img {
-    height: 70px;
+    height: 48px; /* Fits comfortably inside the padded navbar */
     width: auto;
     object-fit: contain;
-    mix-blend-mode: multiply; /* Removes the white padding from JPEG */
-    transform: scale(1.6); /* Scales the actual cupcake up visually */
-    transform-origin: left center;
+    mix-blend-mode: multiply; /* Keep blend to hide white bg, but remove scale */
 }
 
 .nav-links {
