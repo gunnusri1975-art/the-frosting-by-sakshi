@@ -259,7 +259,7 @@ p {
     width: auto;
     object-fit: contain;
     mix-blend-mode: multiply; /* Removes the white padding from JPEG */
-    transform: scale(1.8); /* Scales the actual cupcake up visually to compensate */
+    transform: scale(1.4); /* Scales the actual cupcake up visually to compensate */
     transform-origin: left center;
 }
 
