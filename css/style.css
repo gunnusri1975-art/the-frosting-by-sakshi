@@ -252,15 +252,17 @@ p {
     display: flex;
     align-items: center;
     gap: 15px; /* slightly increased gap */
+    mix-blend-mode: multiply; /* Blend the whole container to ensure the box outline disappears */
 }
 
 .nav-logo-img {
     height: 70px;
     width: auto;
     object-fit: contain;
-    mix-blend-mode: multiply; /* Removes the white padding from JPEG */
+    mix-blend-mode: multiply; 
     transform: scale(1.6); /* Scales the actual cupcake up visually */
     transform-origin: left center;
+    clip-path: inset(0px 0px 0px 0px); /* Clip any white box that bleeds over */
 }
 
 .nav-links {
