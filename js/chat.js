@@ -183,9 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show typing indicator
         showTypingIndicator();
 
-        // Call Local Netlify Serverless Function
+        // Call Local Vercel Serverless Function
         try {
-            const response = await fetch('/.netlify/functions/chat', {
+            const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
